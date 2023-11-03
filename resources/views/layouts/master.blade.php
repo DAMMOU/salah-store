@@ -27,6 +27,9 @@
 
     <link href="{{URL::asset('css/templatemo-pod-talk.css')}}" rel="stylesheet">
     
+    
+    
+    
     <!-- TemplateMo 584 Pod Talk
 
     https://templatemo.com/tm-584-pod-talk
@@ -36,7 +39,10 @@
 
     <body>
         <main>
+            @include('components.user.nav-bar')
             @yield('content')
+            @include('components.user.footer')
+
         </main>
 
         <!-- JAVASCRIPT FILES -->
@@ -44,6 +50,9 @@
         <script src="{{URL::asset('js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{URL::asset('js/owl.carousel.min.js')}}"></script>
         <script src="{{URL::asset('js/custom.js')}}"></script>
+        
+        
+        
 
     </body>
 

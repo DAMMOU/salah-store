@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand me-lg-5 me-0" href="#">
-            <img src="{{URL::asset('lafac-store/images/lafac-store-logo.png')}}"  class="logo-image img-fluid" width="20" height="20" alt="logo lafac store">
+            <img src="{{URL::asset('images/lafac-store-logo.png')}}"  class="logo-image img-fluid" width="20" height="20" alt="logo lafac store">
         </a>
         <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
             <div class="input-group input-group-lg">
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="">{{__('Home')}}</a>
+                    <a class="nav-link active" href="{{ url('/') }}">{{__('Home')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">{{__('About')}}</a>
@@ -33,7 +33,7 @@
                     </ul>
                 </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" href="">{{__('Contact')}}</a>
+                    <a class="nav-link" href="{{ route('contact-us') }}">{{__('Contact')}}</a>
                 </li>
             </ul>
             <div class="ms-4">
