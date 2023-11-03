@@ -7,7 +7,7 @@
     <meta name="description" content="Lafac Store">
     <meta name="author" content="Youssef DAMMOU">
 
-    <title>Lafac Store - Boutique en ligne</title>
+    <title>Salah Store - Boutique en ligne</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset("lafac-store/images/lafac-store-logo.png")}}">
 
     <!-- CSS FILES -->

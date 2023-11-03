@@ -18,6 +18,8 @@ Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
 Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
 Route::post('/contact-us', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact-us.store');
 
+Route::get('addtocart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addtocart');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
