@@ -27,5 +27,6 @@ class StoreMessageRequest extends FormRequest
             'phone' => 'required|numeric',
             'message' => 'required',
         ];
+
     }
 }

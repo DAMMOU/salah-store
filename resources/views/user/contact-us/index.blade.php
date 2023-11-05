@@ -11,11 +11,33 @@
             </div>
         </div>
     </header>
+    
     <section class="section-padding" id="section_2">
         <div class="container">
                 <div class="row justify-content-center">
-
+                    <div class="col-lg-8 col-12 mx-auto">
+                       
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                            <div class="modal" tabindex="-1" aria-labelledby="..." aria-hidden="true">
+                                ...
+                              </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+                    
                     <div class="col-lg-5 col-12 pe-lg-5">
+                        
                         <div class="contact-info">
                             <h3 class="mb-4">We love to help you. Get in touch</h3>
 
@@ -48,7 +70,7 @@
             </div>
     </section>
 
-    <section class="contact-section section-padding pt-0" id="contact-section">
+    <section class="contact-section section-padding pt-0" id="contact">
         <div class="container">
             <div class="row">
 
@@ -60,6 +82,9 @@
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
+                        <div class="modal" tabindex="-1" aria-labelledby="..." aria-hidden="true">
+                            ...
+                          </div>
                     @endif
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -69,9 +94,14 @@
                                 @endforeach
                             </ul>
                         </div>
+                        <div class="modal" tabindex="-1" aria-labelledby="..." aria-hidden="true">
+                            ...
+                          </div>
                     @endif
+                    
+                      
 
-                    <form action="{{ route('contact-us.store')}}" method="post" class="custom-form contact-form" role="form"id="contact-form">
+                    <form action="{{ route('send-mail')}}" method="post" class="custom-form contact-form" role="form"id="contact-form">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">

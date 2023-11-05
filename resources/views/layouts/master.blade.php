@@ -50,7 +50,8 @@
         <script src="{{URL::asset('js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{URL::asset('js/owl.carousel.min.js')}}"></script>
         <script src="{{URL::asset('js/custom.js')}}"></script>
-        
+         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+
         
         
 

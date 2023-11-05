@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart; // Assurez-vous d'importer le modèle Cart
+use App\Models\Product;
 
 class CartController extends Controller
 {
@@ -24,7 +25,7 @@ class CartController extends Controller
      * @param int $productId
      * @return \Illuminate\Http\Response
      */
-    public function addToCart($productId)
+    public function addProductToCart($productId)
     {
         $product = Product::find($productId); // Remplacez Product par le modèle de produit approprié
 
@@ -33,6 +34,7 @@ class CartController extends Controller
         }
 
         $cart = session()->get('cart', new Cart());
+        dd($cart);
         $cart->addProduct($product);
 
         session()->put('cart', $cart);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SendMailController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,11 @@ Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
 Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
 Route::post('/contact-us', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact-us.store');
 
-Route::get('addtocart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addtocart');
+Route::get('addtocart/{id}', [\App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addtocart');
+Route::post('send-mail', [SendMailController::class, 'index'])->name('send-mail');
+Route::get('ikhan', function(){
+    return view('ikhan');
+});
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
