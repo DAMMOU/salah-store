@@ -82,9 +82,6 @@
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
-                        <div class="modal" tabindex="-1" aria-labelledby="..." aria-hidden="true">
-                            ...
-                          </div>
                     @endif
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -94,14 +91,9 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="modal" tabindex="-1" aria-labelledby="..." aria-hidden="true">
-                            ...
-                          </div>
                     @endif
-                    
-                      
 
-                    <form action="{{ route('send-mail')}}" method="post" class="custom-form contact-form" role="form"id="contact-form">
+                    <form action="{{ route('mail')}}" method="get" class="custom-form contact-form" role="form"id="contact-form">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">

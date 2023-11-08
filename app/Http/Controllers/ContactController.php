@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMessageRequest;
+use App\Mail\ContactFormEmail;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -13,23 +15,38 @@ class ContactController extends Controller
         return view('user.contact-us.index');
     }
     
-    public function store(StoreMessageRequest $request)
-    {
-        // Validez les données entrées par l'utilisateur 
-        $request->validated();
 
-      
-        // Créez une nouvelle instance du modèle Contact avec les données du formulaire
-        $message = Message::create([
+    public function saveAndSendMail(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|numeric|max:255',
+            'message' => 'required',
+        ]);
+    
+        // Créez un nouveau message dans la base de données
+        $mailData = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'message' => $request->input('message'),
-        ]);
-
-        
-        // Redirigez l'utilisateur vers une page de contact-us
-        return redirect('/contact-us')->with('success', 'Message envoyé avec succès');
+            'url' => 'ddddddd',
+        ];
+    
+        try {
+            // Envoyez l'e-mail
+            Mail::to(config('mail.from.address'))->send(new ContactFormEmail($mailData));
+    
+            // Vérifiez si l'envoi de l'e-mail a réussi
+            if (Mail::failures()) {
+                return redirect('contact-us')->with('error', 'L\'envoi de l\'e-mail a échoué, veuillez réessayer.');
+            }
+        } catch (\Exception $e) {
+            return redirect('contact-us')->with('error', "Les paramètres SMTP n'ont pas encore été configurés, veuillez contacter l'équipe de support. " . $e->getMessage());
+        }
+    
+        return redirect('contact-us')->with('success', 'L\'e-mail a été enregistré et envoyé avec succès');
     }
-
+    
 }

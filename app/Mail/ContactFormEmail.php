@@ -9,21 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SeedMail extends Mailable
+class ContactFormEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $mailData;
+    public $data;
 
     /**
-     * Create a new mail instance.
-     * 
-     * @return void
+     * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct($data)
     {
-        $this->mailData = $mailData;
+        $this->data = $data;
     }
+
 
     /**
      * Build the message.
@@ -32,7 +30,7 @@ class SeedMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from salah-store.com')
+        return $this->subject('New Contact Us Request from a Customer')
                     ->markdown('emails.demoMail');
     }
 
@@ -42,7 +40,7 @@ class SeedMail extends Mailable
     // public function envelope(): Envelope
     // {
     //     return new Envelope(
-    //         subject: 'Seed Mail',
+    //         subject: 'Contact Form Email',
     //     );
     // }
 
@@ -52,7 +50,7 @@ class SeedMail extends Mailable
     // public function content(): Content
     // {
     //     return new Content(
-    //         markdown: 'emails.demoMail',
+    //         view: 'view.name',
     //     );
     // }
 

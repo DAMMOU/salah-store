@@ -14,16 +14,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
-Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
-Route::post('/contact-us', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact-us.store');
-
-Route::get('addtocart/{id}', [\App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addtocart');
-Route::post('send-mail', [SendMailController::class, 'index'])->name('send-mail');
 Route::get('ikhan', function(){
     return view('ikhan');
 });
+
+
+Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
+Route::get('/contact-us', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact-us');
+Route::get('/mail', [\App\Http\Controllers\ContactController::class, 'saveAndSendMail'])->name('mail');
+
+Route::get('addtocart/{id}', [\App\Http\Controllers\CartController::class, 'addProductToCart'])->name('addtocart');
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
